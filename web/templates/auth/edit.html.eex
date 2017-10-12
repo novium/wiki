@@ -1,0 +1,6 @@
+<h2>Edit auth</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: auth_path(@conn, :update, @auth) %>
+
+<%= link "Back", to: auth_path(@conn, :index) %>
