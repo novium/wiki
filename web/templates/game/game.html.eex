@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row game-header">
+    <div class="col col-md-8 mr-auto game-info">
+      <h2 style="font-weight: 100"><%= @game.name %></h2>
+      <dl style="font-size: 1.25rem" class="row">
+        <dt class="col-sm-3">Release</dt>
+        <dd class="col-sm-8"><%= @game.release %></dd>
+
+        <dt class="col-sm-3">Developer</dt>
+        <dd class="col-sm-8">Blizzard Entertainment</dd>
+
+        <dt class="col-sm-3">Platform</dt>
+        <dd class="col-sm-8">PC</dd>
+      </dl>
+      <p>World of Warcraft: The Burning Crusade was released in 2012 by Blizzard Entertainment for the PC</p>
+      <p>As the game is still updated it works perfectly on any machine</p>
+
+      <p>
+        <span class="badge badge-success">works</span> 
+        <span class="badge badge-info">requires workaround</span> 
+        <span class="badge badge-secondary">multiplayer</span>
+        <span class="badge badge-warning">few players</span>
+      </p>
+    </div>
+    <div class="col-auto col-md-auto box-art-container">
+      <div class="box-art" style='background-image: url("<%= @game.boxart %>")'></div>
+    </div>
+  </div>
+
+  <div class="row game-body">
+    <div class="col col-md-8 mr-auto game-body-main">
+      <div class="container">
+        <h2>About</h2>
+        <p>
+          Nulla facilisis, risus a rhoncus fermentum, tellus tellus lacinia purus, et dictum nunc justo sit amet elit.
+          Suspendisse potenti. Donec pretium posuere tellus.  Vestibulum convallis, lorem a tempus semper, dui dui euismod elit, vitae placerat urna tortor vitae lacus.   
+        </p>
+        <p>Mauris mollis tincidunt felis.</p>
+
+        <h2>How to get</h2>
+        <a href="#" class="btn btn-primary">Battle.net</a>
+        <a href="#" class="btn btn-secondary">Steam</a>
+        <p>// If it's not available add maybe a few pointers as to how to get it? //</p>
+
+        <h2>How to run</h2>
+        (Insert OS here)
+
+        <p>
+          Aliquam erat volutpat.  Nunc eleifend leo vitae magna.  In id erat non orci commodo lobortis.  Proin neque massa, cursus ut, gravida ut, lobortis eget, lacus.  Sed diam.  Praesent fermentum tempor tellus.  Nullam tempus.  Mauris ac felis vel velit tristique imperdiet.  Donec at pede.  Etiam vel neque nec dui dignissim bibendum.  Vivamus id enim.  Phasellus neque orci, porta a, aliquet quis, semper a, massa.  Phasellus purus.  Pellentesque tristique imperdiet tortor.  Nam euismod tellus id erat.
+        </p>
+
+        <h2>Similar games</h2>
+        <ul class="list-inline">
+          <li class="list-inline-item">World of Warcraft: Wrath of the Lich King</li>
+          <li class="list-inline-item">Diablo III</li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div style="padding-left: 0; padding-right: 0;" class="col-auto col-md-4">
+      <div class="game-body-extra-multiplayer">
+      <h4>Upcoming events</h4>
+      <ul>
+        <li>Lorem ipsum</li>
+        <li>More events</li>
+        <li>An amazing event</li>
+      </ul>
+      </div>
+    </div>
+  </div>
+</div>

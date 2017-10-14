@@ -5,7 +5,7 @@ defmodule Wiki.Game do
   schema "games" do
     field :name, :string
     field :description, :string
-    field :release, :integer     # year of release
+    field :release, :integer, default: 2012
     field :boxart, :string       # Should be replaced with id on S3
 
     timestamps()
