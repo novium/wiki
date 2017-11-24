@@ -32,9 +32,11 @@ defmodule Wiki.AuthController do
   end
 
   defp find_or_create(auth) do
-    case Repo.get_by(Wiki.User, coreid: auth.uid) do
-      nil -> create(auth)
-      user -> {:ok, user}
+    user = Repo.get_by(Wiki.User, coreid: auth.uid)
+
+    case is_nil(user) do
+      true -> create(auth)
+      false -> {:ok, user}
     end
   end
 

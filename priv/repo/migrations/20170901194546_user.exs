@@ -13,6 +13,6 @@ defmodule Wiki.Repo.Migrations.User do
       timestamps()
     end
 
-    create unique_index(:users, [:cid])
+    create unique_index(:users, [:coreid])
   end
 end
