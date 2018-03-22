@@ -21,7 +21,11 @@
             <a class="nav-link active" href="#">link1</a>
           </li>
         </ul>
-        <a class="navbar-link">log in</a>
+        <%= if Guardian.Plug.current_resource(@conn) != nil do %>
+            Logged in!
+        <% else %>
+            <a class="navbar-link">log in</a>
+        <% end %>
       </div>
     </nav>
 

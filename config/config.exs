@@ -31,15 +31,14 @@ config :ueberauth, Ueberauth.Strategy.Core.OAuth,
   client_id: "7706d429-49c1-4c1d-bd35-aeb89a129ade",
   client_secret: "7dff60c8-6344-41ff-b885-af1465dbe89e"
 
-config :guardian, Guardian,
+config :wiki, Wiki.Guardian,
   allowed_algos: ["HS512"], # optional
   verify_module: Guardian.JWT,  # optional
   issuer: "Wiki",
   ttl: {30, :days},
   allowed_drift: 2000,
   verify_issuer: true, # optional
-  secret_key: "C+XnZx8nnSmHN87wRwGA99WPb3tieVDSFuWsGW6T0WgcwETQt/8g6lsRGELv9lLZ",
-  serializer: GuardianSerializer
+  secret_key: "C+XnZx8nnSmHN87wRwGA99WPb3tieVDSFuWsGW6T0WgcwETQt/8g6lsRGELv9lLZ"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

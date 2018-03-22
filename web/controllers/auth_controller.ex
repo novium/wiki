@@ -17,7 +17,7 @@ defmodule Wiki.AuthController do
     case find_or_create(auth) do
       {:ok, user} ->
         conn
-        |> Guardian.Plug.sign_in(user)
+        |> Wiki.Guardian.Plug.sign_in(user)
         |> put_flash(:info, "Hooray! Logged in!")
         |> redirect(to: "/")
       {:error, reason} ->

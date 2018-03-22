@@ -42,7 +42,7 @@ defmodule Wiki.Mixfile do
     
      {:ueberauth, "~> 0.4.0"},
      {:ueberauth_core, path: "../ueberauth_core"},
-     {:guardian, "~> 0.14.5"}
+     {:guardian, "~> 1.0"}
     ]
   end
 
