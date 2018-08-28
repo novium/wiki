@@ -1,15 +1,17 @@
 defmodule Wiki.GameController do
   use Wiki.Web, :controller
   alias Wiki.Game
+  alias Wiki.SteamGame
 
   def index(conn, _params) do
     conn |> text("Here you should be able to search for games")
   end
 
   def show(conn, _params = %{"slug" => slug}) do
-    case Repo.get(Game, slug) do
+    case Repo.get(Game, from_slug slug) do
       nil -> conn |> text("Game doesnt exist")
-      game -> conn |> render("game.html", game: game)
+      game ->
+        conn |> render("game.html", game: game, tags: Repo.all(assoc(game, :tags)))
     end
   end
 
@@ -17,6 +19,19 @@ defmodule Wiki.GameController do
     changeset = Game.changeset(%Game{})
     conn
     |> render("create.html", changeset: changeset)
+  end
+
+  def search_steam(conn, _params = %{"name" => name}) do
+    query = from g in SteamGame,
+      where: fragment("? SOUNDS LIKE ?", ^name, g.name),
+      order_by: [asc: g.appid],
+      limit: 7,
+      select: map(g, [:appid, :name])
+
+    case Repo.all(query) do
+      [] -> conn |> json %{"error" => "nothing found"}
+      games -> conn |> json games
+    end
   end
 
   def create(conn = %{method: "POST"},
@@ -37,7 +52,7 @@ defmodule Wiki.GameController do
 
 
   defp from_slug(slug) do
-    slug |> String.replace("-", " ")
+    slug |> String.split("-") |> List.last
   end
 
   defp random_string() do

@@ -11,7 +11,7 @@ config :wiki,
 
 # Configures the endpoint
 config :wiki, Wiki.Endpoint,
-  url: [host: "localhost"],
+  url: [host: "0.0.0.0"],
   secret_key_base: "xTmwdR5eXT8XgkURVQEL7ihFXXmQIQtbpBEk81+K35XJgWMSYvBBPXgGdHBSkeOR",
   render_errors: [view: Wiki.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Wiki.PubSub,
@@ -28,8 +28,8 @@ config :ueberauth, Ueberauth,
   ]
 
 config :ueberauth, Ueberauth.Strategy.Core.OAuth,
-  client_id: "7706d429-49c1-4c1d-bd35-aeb89a129ade",
-  client_secret: "7dff60c8-6344-41ff-b885-af1465dbe89e"
+  client_id: "c94bf4f4-71ba-4e65-b8d7-1c0fc9a93853",
+  client_secret: "743cfea4-fa7c-47eb-9007-ea9490315013"
 
 config :wiki, Wiki.Guardian,
   allowed_algos: ["HS512"], # optional

@@ -13,7 +13,7 @@ defmodule Wiki.Tag do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:tag])
+    |> cast(params, [:tag, :games])
     |> validate_required([:tag])
   end
 end

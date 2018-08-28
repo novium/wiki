@@ -4,9 +4,13 @@ defmodule Wiki.Repo.Migrations.CreateGames do
   def change do
     create table(:games) do
       add :name, :string
-      add :description, :string
+      add :description, :text
       add :release, :integer
       add :boxart, :string
+      add :platform, :string
+
+      add :about, :text
+      add :help, :text
 
       timestamps()
     end

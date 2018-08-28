@@ -37,7 +37,7 @@ config :phoenix, :stacktrace_depth, 20
 config :wiki, Wiki.Repo,
   adapter: Ecto.Adapters.MySQL,
   username: "root",
-  password: "nopassword",
+  password: "",
   database: "wiki_dev",
-  hostname: "localhost",
+  hostname: "mysql",
   pool_size: 10

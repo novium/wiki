@@ -9,11 +9,15 @@
 
     <title>Hello Wiki!</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200,300" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.jquery.min.js" integrity="sha256-nORlj0J8ZjvGz+6rtHb2Jcc0QDASsDUNOwUkfcwoW8A=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-md sticky-top navbar-light">
+    <!--<nav class="navbar navbar-expand-md sticky-top navbar-light">-->
+    <nav class="navbar navbar-expand-md navbar-light">
       <a class="navbar-brand" href="#">dgportal<sup>alpha</sup></a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
@@ -24,7 +28,7 @@
         <%= if Guardian.Plug.current_resource(@conn) != nil do %>
             Logged in!
         <% else %>
-            <a class="navbar-link">log in</a>
+            <a class="navbar-link" href="/auth/core">log in</a>
         <% end %>
       </div>
     </nav>
@@ -43,6 +47,24 @@
       </main>
 
     </div> <!-- /container -->
+
+    <footer>
+      <svg class="footer-slash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <polygon fill="rgb(19, 19, 19)" points="0,100 100,0 100,100"/>
+      </svg>
+
+      <div class="content">
+        <div class="row">
+          <div class="col col-md-2"></div>
+          <div class="col col-md-6"></div>
+          <div class="col col-md-4">
+            &copy; Alexander Troshin 2018 All Rights Reserved<br>
+            Made with ❤ for the Dead MP Steam Games Group
+          </div>
+        </div>
+      </div>
+    </footer>
+
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

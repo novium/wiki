@@ -39,10 +39,13 @@ defmodule Wiki.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-    
+     {:earmark, "~> 1.2"},
+
      {:ueberauth, "~> 0.4.0"},
      {:ueberauth_core, path: "../ueberauth_core"},
-     {:guardian, "~> 1.0"}
+     {:guardian, "~> 1.0"},
+
+     {:cors_plug, "~> 1.5"}
     ]
   end
 

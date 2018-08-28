@@ -1,18 +1,130 @@
-<div class="container">
+<div class="container create-game">
   <h2>add a new game</h2>
+
   <%= form_for @changeset, game_path(@conn, :create), fn f -> %>
-  <label>
-    Name: <%= text_input f, :name %>
-  </label>
 
-  <label>
-    Description: <%= textarea f, :description %>
-  </label>
+  <div class="form-group form-check">
+    <%= checkbox f, :steam, class: "form-check-input" %>
+    <label class="form-check-label" for="game_name">On steam?</label>
+  </div>
 
-  <label>
-    Boxart: <%= text_input f, :boxart %>
-  </label>
+  <div class="form-group">
+    <label for="game_name">Name</label>
+    <%= text_input f, :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label for="game_description">Description</label>
+     <%= textarea f, :description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label for="game_boxart">Boxart</label>
+    <%= text_input f, :boxart, class: "form-control" %>
+  </div>
 
   <%= submit "Add!" %>
   <% end %>
 </div>
+
+<script>
+  /* 
+    // NON-ELASTICSEARCH
+    var matcher = function() {
+    return function findMatches(q, cb, a) {
+      var matches, substringRegex;
+
+      matches = [];
+
+      $.get("/game/search_steam/" + q).done(function(data) {
+        $.each(data, function(i, d) {
+          matches.push(d.name);
+        });
+
+        a(matches);
+      });
+
+
+    };
+  };
+
+  $("#game_name").typeahead({
+    hint: true,
+    minLength: 2,
+    highlight: true
+  },
+  {
+    name: "games",
+    source: matcher()
+  }); */
+
+  var matcher = function() {
+    return function findMatches(q, cb, a) {
+      var matches, substringRegex;
+
+      matches = [];
+
+      /*$.post("http://10.0.75.2:9200/logstash-*\/_search",
+        {
+          "query": {
+            "multi_match": {
+              "query": q,
+              "fields": ["name"]
+            }
+          }
+        }, function(data) {
+        $.each(data, function(i, d) {
+          matches.push(d.name);
+        });
+
+        a(matches);
+      }, "json"
+      );*/
+      console.log($("#game_steam").is(':checked'));
+      if($("#game_steam").is(':checked')) {
+        $.ajax({
+          url: "http://10.0.75.2:9200/logstash-*/_search",
+          type: "POST",
+          contentType: "application/json", // send as JSON
+          data: JSON.stringify({
+            "query": {
+              "multi_match": {
+                "query": '"' + q + '"',
+                "fields": ["name"]
+              }
+            }
+          })
+        }).done(function(data) {
+            $.each(data.hits.hits, function(i, d) {
+              matches.push(d._source.name);
+            });
+
+            a(matches);
+        });
+      };
+    };
+  };
+
+  $("#game_name").typeahead({
+    hint: true,
+    minLength: 2,
+    highlight: true,
+    cache: true
+  },
+  {
+    name: "games",
+    source: matcher()
+  });
+
+  if($("#game_steam").is(':checked')) {
+    $("#game_boxart").hide();
+  }
+  
+  $("#game_steam").click(function() {
+    if($("#game_steam").is(':checked')) {
+      $("#game_boxart").hide();
+    } else {
+      $("#game_boxart").show();
+    }
+  });
+</script>

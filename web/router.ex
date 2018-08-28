@@ -18,8 +18,12 @@ defmodule Wiki.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :cors do
+    plug CORSPlug, origin: ["http://10.0.75.2"]
+  end
+
   scope "/", Wiki do
-    pipe_through [:browser, :auth] # Use the default browser stack
+    pipe_through [:browser, :auth, :cors] # Use the default browser stack
 
     get "/", PageController, :index
 
@@ -27,6 +31,13 @@ defmodule Wiki.Router do
     get "/game/create", GameController, :create
     get "/game/:slug", GameController, :show
     post "/game/create", GameController, :create
+  end
+
+  # API's
+  scope "/", Wiki do
+    pipe_through [:api]
+    
+    get "/game/search_steam/:name", GameController, :search_steam
   end
 
   scope "/auth", Wiki do
