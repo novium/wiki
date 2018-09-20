@@ -10,10 +10,6 @@ defmodule Wiki.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :auth do
-    plug Wiki.Auth.Pipeline
-  end
-
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -23,7 +19,7 @@ defmodule Wiki.Router do
   end
 
   scope "/", Wiki do
-    pipe_through [:browser, :auth, :cors] # Use the default browser stack
+    pipe_through [:browser, :cors] # Use the default browser stack
 
     get "/", PageController, :index
 
