@@ -41,3 +41,9 @@ config :wiki, Wiki.Repo,
   database: "wiki_dev",
   hostname: "mysql",
   pool_size: 10
+
+
+config :wiki, Wiki.ElasticsearchCluster,
+  url: "http://elasticsearch:9200",
+  api: Elasticsearch.API.HTTP,
+  json_library: Poison

@@ -81,21 +81,14 @@
       }, "json"
       );*/
       console.log($("#game_steam").is(':checked'));
-      if($("#game_steam").is(':checked')) {
+        if($("#game_steam").is(':checked')) {
         $.ajax({
-          url: "http://10.0.75.2:9200/logstash-*/_search",
-          type: "POST",
-          contentType: "application/json", // send as JSON
-          data: JSON.stringify({
-            "query": {
-              "multi_match": {
-                "query": '"' + q + '"',
-                "fields": ["name"]
-              }
-            }
-          })
+            url: "http://localhost:4000/game/search_steam/" + q,
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json",
         }).done(function(data) {
-            $.each(data.hits.hits, function(i, d) {
+            $.each(data.hits, function(i, d) {
               matches.push(d._source.name);
             });
 

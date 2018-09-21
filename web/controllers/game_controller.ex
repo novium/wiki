@@ -22,16 +22,28 @@ defmodule Wiki.GameController do
   end
 
   def search_steam(conn, _params = %{"name" => name}) do
-    query = from g in SteamGame,
-      where: fragment("? SOUNDS LIKE ?", ^name, g.name),
-      order_by: [asc: g.appid],
-      limit: 7,
-      select: map(g, [:appid, :name])
+    #query = from g in SteamGame,
+    #  where: fragment("? SOUNDS LIKE ?", ^name, g.name),
+    #  order_by: [asc: g.appid],
+    #  limit: 7,
+    #  select: map(g, [:appid, :name])
 
-    case Repo.all(query) do
-      [] -> conn |> json %{"error" => "nothing found"}
-      games -> conn |> json games
+    #case Repo.all(query) do
+    #  [] -> conn |> json %{"error" => "nothing found"}
+    #  games -> conn |> json games
+    #end
+
+
+    case Elasticsearch.post(Wiki.ElasticsearchCluster, "/logstash-*/_search", %{"query" =>
+                                                                            %{"multi_match" =>
+                                                                               %{"query" => name,
+                                                                                "fields" => ["name"]}
+                                                                             }
+                                                                               }) do
+      {:ok, %{"hits" => hits}} -> conn |> json hits
+      otherwise -> conn |> json %{"error" => "nothing found"}
     end
+    conn |> text "hello"
   end
 
   def create(conn = %{method: "POST"},

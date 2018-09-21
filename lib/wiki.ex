@@ -14,6 +14,7 @@ defmodule Wiki do
       supervisor(Wiki.Endpoint, []),
       # Start your own worker by calling: Wiki.Worker.start_link(arg1, arg2, arg3)
       # worker(Wiki.Worker, [arg1, arg2, arg3]),
+      Wiki.ElasticsearchCluster
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

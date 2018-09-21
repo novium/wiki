@@ -45,7 +45,7 @@ defmodule Wiki.Mixfile do
      {:ueberauth_core, path: "../ueberauth_core"},
      {:guardian, "~> 1.0"},
 
-     {:cors_plug, "~> 1.5"}
+     {:elasticsearch, "~> 0.5.2"}
     ]
   end
 

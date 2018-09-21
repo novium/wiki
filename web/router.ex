@@ -23,6 +23,7 @@ defmodule Wiki.Router do
     get "/game/create", GameController, :create
     get "/game/:slug", GameController, :show
     post "/game/create", GameController, :create
+    get "/game/search", GameController, :steam_search
   end
 
   # API's
