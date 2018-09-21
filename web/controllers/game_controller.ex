@@ -43,7 +43,6 @@ defmodule Wiki.GameController do
       {:ok, %{"hits" => hits}} -> conn |> json hits
       otherwise -> conn |> json %{"error" => "nothing found"}
     end
-    conn |> text "hello"
   end
 
   def create(conn = %{method: "POST"},
@@ -62,12 +61,11 @@ defmodule Wiki.GameController do
     end
   end
 
-
   defp from_slug(slug) do
     slug |> String.split("-") |> List.last
   end
 
   defp random_string() do
-    Ecto.UUID.generate |> binary_part(0,8)
+    Ecto.UUID.generate |> binary_part(0, 8)
   end
 end

@@ -41,6 +41,11 @@ defmodule Wiki.Mixfile do
      {:cowboy, "~> 1.0"},
      {:earmark, "~> 1.2"},
 
+     # DEV
+     {:credo, "~> 0.5", only: [:dev, :test]},
+     {:dogma, "~> 0.1", only: [:dev]},
+     # END
+
      {:ueberauth, "~> 0.4.0"},
      {:ueberauth_core, path: "../ueberauth_core"},
      {:guardian, "~> 1.0"},

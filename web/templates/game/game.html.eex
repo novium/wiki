@@ -1,8 +1,8 @@
-<div class="game-background" style="background: url('/images/dw.jpg') rgb(30, 30, 30)">
+<div class="game-background" style="background: url('') rgb(30, 30, 30)">
   <svg class="bg-slash-top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
     <polygon fill="rgb(30, 30, 30)" points="0,0 100,0 0,100"/>
   </svg>
-    
+
   <svg class="bg-slash-bottom" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
     <polygon fill="rgb(30, 30, 30)" points="0,100 100,0 100,100"/>
   </svg>
@@ -40,8 +40,10 @@
     <div class="col col-md-2"></div>
     <div class="col col-md-8 mr-auto game-body-main">
       <div class="container">
-        <h2>About</h2>
-        <%= text_to_html @game.about %>
+          <span class="float-right"><a href="#" id="editAbout">edit</a></span><h2>About</h2>
+          <div id="about" >
+          <%= text_to_html @game.about %>
+          </div>
 
         <h2>How to get</h2>
         <p>
@@ -73,3 +75,21 @@
     </div>-->
   </div>
 </div>
+
+<script>
+ let editing = false;
+
+ $("#editAbout").on("click", function() {
+     if(!editing) {
+         editing = true;
+        $("#editAbout").text("save");
+        $("#about").attr('contenteditable', "true");
+     } else {
+         editing = false;
+         $("#editAbout").text("edit");
+         $("#about").attr('contenteditable', "false");
+         $.ajax();
+         console.log("TODO: Save");
+ }
+ });
+</script>

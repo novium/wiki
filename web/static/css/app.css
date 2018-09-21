@@ -118,13 +118,11 @@ backdrop-filter: blur(5px); */
     background: -webkit-linear-gradient(140deg, rgb(106, 48, 147), rgb(160, 68, 255));
     background: linear-gradient(140deg, rgb(106, 48, 147), rgb(160, 68, 255)); */
 
-    
     background: rgb(35, 37, 38); /* fallback for old browsers */
-    background: -webkit-linear-gradient(140deg, rgba(21, 21, 22, 0.8), rgba(53, 54, 56, 0.8)); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(140deg, rgba(21, 21, 22, 0.8), rgba(53, 54, 56, 0.8)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(140deg, rgba(21, 21, 22, 0.95), rgba(53, 54, 56, 0.95)); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(140deg, rgba(21, 21, 22, 0.95), rgba(53, 54, 56, 0.95)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     box-shadow: 0 0 25px rgba(20, 20, 20, 0.5);
-    
     /* box-shadow: 0 0 25px rgba(160, 68, 255, 0.5); */
 
     color: white;
@@ -133,7 +131,7 @@ backdrop-filter: blur(5px); */
 
     padding-left: 1em;
 
-    font-family: 'Titillium Web';
+    font-family: 'IBM Plex Sans';
 }
 
 .game-header h2 {
@@ -257,7 +255,7 @@ BASIC
 */
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Titillium Web', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 /* 
