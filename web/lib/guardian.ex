@@ -1,15 +1,16 @@
-defmodule GuardianSerializer do
+defmodule Wiki.Guardian do
   @moduledoc """
   Contains the serializer for guardian
   """
+  use Guardian, otp_app: :wiki
   alias Wiki.Repo
 
-  def for_token(user = %Wiki.User{}) do
+  def subject_for_token(user = %Wiki.User{}, _claims) do
     {:ok, "#{user.coreid}"}
   end
 
-  def from_token(token) do
-    case Repo.get_by(Wiki.User, coreid: token) do
+  def resource_from_claims(claims) do
+    case Repo.get_by(Wiki.User, coreid: claims["sub"]) do
       nil -> {:error, "No user"}
       user -> {:ok, {:ok, user}}
     end

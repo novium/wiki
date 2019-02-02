@@ -28,8 +28,8 @@ config :ueberauth, Ueberauth,
   ]
 
 config :ueberauth, Ueberauth.Strategy.Core.OAuth,
-  client_id: "c94bf4f4-71ba-4e65-b8d7-1c0fc9a93853",
-  client_secret: "743cfea4-fa7c-47eb-9007-ea9490315013"
+  client_id: "b1ed474f-f01d-4886-8d7b-b3ee63534608",
+  client_secret: "c1ed474f-f01d-4886-8d7b-b3ee63534608"
 
 config :wiki, Wiki.Guardian,
   allowed_algos: ["HS512"], # optional
